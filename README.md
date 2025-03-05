@@ -1,76 +1,82 @@
-# MCP Hello World
+# Debugging with Chrome DevTools and Cursor
 
-The simplest and easiest-to-understand example of the Model Context Protocol (MCP) implementation.
+This project is designed as a lesson on debugging web applications using Chrome DevTools and Cursor.
 
-## What is MCP?
+## Setup
 
-The Model Context Protocol (MCP) is a standardized interface that allows AI assistants to interact with external tools and services. It enables AI models to:
+1. Navigate to the client directory
+2. Run `npm install` to install dependencies
+3. Run `npm run dev` to start the development server
+4. Open the application in your browser
 
-- Discover available tools
-- Call tools with structured inputs
-- Receive structured outputs
+## Debugging Exercises
 
-This repository serves as a minimal, beginner-friendly example for developers looking to understand and implement MCP in their own applications.
+### 1. Console Logging Methods
 
-## Repository Structure
+The application includes three buttons that demonstrate different console logging methods:
 
-This project consists of two main components:
+- **Log Info**: Uses `console.log()` to output standard information
+- **Log Warning**: Uses `console.warn()` to output warning messages (highlighted in yellow)
+- **Log Error**: Uses `console.error()` to output error messages (highlighted in red)
 
-### 1. Server (`/server`)
+**Exercise**:
 
-A simple TypeScript MCP server that implements:
-- A single "greeting" tool that takes a name and returns a personalized greeting
-- Standard MCP interfaces for tool discovery and execution
-- Uses the official `@modelcontextprotocol/sdk` package
+- Open Chrome DevTools (F12 or Right-click > Inspect)
+- Navigate to the Console tab
+- Click each button and observe the different types of log messages
+- Try filtering the console by log level
 
-### 2. Client (`/client`)
+### 2. Layout Debugging
 
-A minimal React application that demonstrates the frontend part of the application. This is intended to be a dummy app, which represents the main app that you would be working on, whether it's a website, landing page, saas, etc.
+There's a layout issue in the application where the debugging buttons appear too high and overlap with other content when in "wonky" mode.
 
-## Getting Started
+**Problem**:
+The buttons have a negative top margin (`margin: -70px 0 0 0`) in the CSS when in "wonky" mode, causing them to overlap with the content above.
 
-### Server Setup
+**Interactive Demo**:
+The application starts with a good layout and includes a prominent toggle button that switches between "wonky" and "good" layouts:
 
-```bash
-cd server/greeting
-npm install
-npm run build
-npm start
+- **Layout Status Indicator**: Shows the current state of the layout (WONKY or GOOD)
+- **Fix Layout Button**: A purple button with a pointer emoji that fixes the layout issue
+- **Make Layout Wonky Button**: A green button that introduces the layout issue
+
+**Exercise**:
+
+1. Click the "Make Layout Wonky" button to see the layout issue
+2. Use the Elements panel in Chrome DevTools to inspect the `.debug-buttons` element
+3. Observe how the CSS class changes between `.wonky` and `.good`
+4. See how the margin property changes in the Styles panel
+5. Understand how the negative margin affects the layout in "wonky" mode
+6. Click "Fix Layout" to restore the good layout
+
+**Code Exploration**:
+Examine how the toggle is implemented:
+
+1. React state (`isWonkyLayout`) controls which CSS class is applied
+2. CSS classes `.wonky` and `.good` define different margin values
+3. The toggle button changes the state and logs the change to the console
+
+**Solution**:
+The CSS defines two different classes:
+
+```css
+/* Wonky layout with negative margin */
+.debug-buttons.wonky {
+  margin: -70px 0 0 0;
+}
+
+/* Good layout with positive margin */
+.debug-buttons.good {
+  margin: 20px 0 0 0;
+}
 ```
 
-### Client Setup
+## Additional Debugging Tips
 
-```bash
-cd client
-npm install
-npm run dev
-```
+1. **Breakpoints**: Set breakpoints in the Sources panel to pause execution and inspect variables
+2. **Network Tab**: Monitor network requests and responses
+3. **Performance Tab**: Analyze rendering performance
+4. **Application Tab**: Inspect storage (localStorage, cookies, etc.)
+5. **Cursor Integration**: Use Cursor's built-in debugging tools alongside Chrome DevTools
 
-## How It Works
-
-1. The MCP server defines and exposes a "greeting" tool
-2. When called, the tool takes a name parameter and returns a formatted greeting
-3. This simple example demonstrates the core MCP concepts:
-   - Tool definition with schemas
-   - Tool discovery
-   - Tool execution
-   - Structured input/output
-
-## Why This Repository?
-
-This repository is designed to be the simplest possible implementation of MCP, making it ideal for:
-
-- Developers new to MCP
-- Integration with AI assistants like Cursor, Windsurf, and Cline
-- Learning the fundamentals without unnecessary complexity
-- Using as a starting point for your own MCP implementations
-
-## Further Resources
-
-- [MCP GitHub Repository](https://github.com/modelcontextprotocol/protocol)
-- [MCP Documentation](https://modelcontextprotocol.ai/)
-- [MCP SDK Package](https://www.npmjs.com/package/@modelcontextprotocol/sdk)
-
-## License
-
-The MCP Hello World repository is licensed under the MIT License.
+Happy debugging!
