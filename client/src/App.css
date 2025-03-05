@@ -3,6 +3,9 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .card {
@@ -28,4 +31,247 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Debug section styles */
+.debug-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px dashed #646cff;
+  border-radius: 8px;
+  background-color: rgba(100, 108, 255, 0.05);
+}
+
+.debug-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Wonky layout with negative margin */
+.debug-buttons.wonky {
+  margin: -70px 0 0 0;
+}
+
+/* Good layout with positive margin */
+.debug-buttons.good {
+  margin: 20px 0 0 0;
+}
+
+.log-button {
+  min-width: 120px;
+}
+
+.log-button.info {
+  background-color: #3498db;
+  color: white;
+}
+
+.log-button.warning {
+  background-color: #f39c12;
+  color: white;
+}
+
+.log-button.error {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.log-button.stream {
+  background: linear-gradient(45deg, #3498db, #f39c12, #e74c3c);
+  color: white;
+  font-weight: bold;
+  min-width: 150px;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.log-button.stream:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Layout toggle button */
+.layout-toggle {
+  margin: 15px auto;
+  padding: 0.8em 1.5em;
+  font-weight: bold;
+  font-size: 1.1em;
+  display: block;
+  border: 2px solid;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.layout-toggle:before {
+  content: "👇";
+  position: absolute;
+  left: 10px;
+}
+
+.layout-toggle.wonky {
+  background-color: #9b59b6;
+  color: white;
+  border-color: #8e44ad;
+}
+
+.layout-toggle.wonky:hover {
+  background-color: #8e44ad;
+}
+
+.layout-toggle.good {
+  background-color: #2ecc71;
+  color: white;
+  border-color: #27ae60;
+}
+
+.layout-toggle.good:hover {
+  background-color: #27ae60;
+}
+
+/* Layout status indicator */
+.layout-status {
+  margin-bottom: 15px;
+}
+
+.status-indicator {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.status-indicator.wonky {
+  background-color: #ffcccc;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+}
+
+.status-indicator.good {
+  background-color: #d5f5e3;
+  color: #27ae60;
+  border: 1px solid #27ae60;
+}
+
+/* Header styles */
+header {
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, #3498db, #9b59b6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: #666;
+  font-weight: 400;
+  margin-top: 0;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+/* Author section */
+.author-section {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: rgba(100, 108, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(100, 108, 255, 0.2);
+}
+
+.created-by {
+  font-weight: 500;
+  margin: 0 0 0.5rem 0;
+  color: #555;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.more-tutorials {
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.tutorials-link {
+  color: #9b59b6;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border-bottom: 1px dashed #9b59b6;
+  padding-bottom: 2px;
+}
+
+.tutorials-link:hover {
+  color: #8e44ad;
+  border-bottom: 1px solid #8e44ad;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #333;
+  text-decoration: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.social-link.twitter {
+  background-color: rgba(29, 161, 242, 0.1);
+  color: #1da1f2;
+  border: 1px solid rgba(29, 161, 242, 0.3);
+}
+
+.social-link.youtube {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: #ff0000;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.social-link.twitter:hover {
+  background-color: rgba(29, 161, 242, 0.2);
+}
+
+.social-link.youtube:hover {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.twitter-icon {
+  color: #1da1f2;
+  margin-right: 2px;
+}
+
+.youtube-icon {
+  color: #ff0000;
+  margin-right: 2px;
+}
+
+.footer-divider {
+  color: #999;
+  font-weight: bold;
 }
