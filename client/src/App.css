@@ -79,18 +79,41 @@ button:focus-visible {
 }
 
 .log-button.stream {
-  background: linear-gradient(45deg, #3498db, #f39c12, #e74c3c);
+  background: linear-gradient(
+    45deg,
+    #3498db,
+    #f39c12,
+    #e74c3c,
+    #9b59b6,
+    #2ecc71
+  );
+  background-size: 400% 400%;
   color: white;
   font-weight: bold;
   min-width: 150px;
   border: none;
   position: relative;
   overflow: hidden;
+  animation: gradientShift 3s ease infinite;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .log-button.stream:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px) scale(1.05);
+  animation: gradientShift 1s ease infinite;
 }
 
 /* Layout toggle button */
@@ -274,4 +297,149 @@ h1 {
 .footer-divider {
   color: #999;
   font-weight: bold;
+}
+
+/* Vite Error Modal Styles */
+.log-button.vite-error {
+  background-color: #bd34fe;
+  color: white;
+}
+
+.log-button.vite-error:hover {
+  background-color: #a020f0;
+  border-color: #ffffff;
+}
+
+.vite-error-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.vite-error-modal {
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  background-color: #181818;
+  border-radius: 6px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  overflow: auto;
+  color: #e2e2e2;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  text-align: left;
+}
+
+.vite-error-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: #242424;
+  border-bottom: 1px solid #333;
+}
+
+.vite-error-header svg {
+  color: #bd34fe;
+  margin-right: 0.75rem;
+}
+
+.vite-error-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #bd34fe;
+}
+
+.close-button {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0 0.5rem;
+}
+
+.close-button:hover {
+  color: #fff;
+}
+
+.vite-error-content {
+  padding: 1.5rem;
+}
+
+.vite-error-content h2 {
+  margin-top: 0;
+  color: #ff5555;
+  font-size: 1.25rem;
+}
+
+.error-message {
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: #2a2a2a;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.error-message pre {
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: "Fira Code", "Consolas", monospace;
+  font-size: 0.9rem;
+  color: #ff5555;
+}
+
+.error-stack {
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: #2a2a2a;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.error-stack h3 {
+  margin-top: 0;
+  font-size: 1rem;
+  color: #e2e2e2;
+}
+
+.error-stack pre {
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: "Fira Code", "Consolas", monospace;
+  font-size: 0.9rem;
+  color: #e2e2e2;
+}
+
+.error-hint {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: rgba(189, 52, 254, 0.1);
+  border-left: 4px solid #bd34fe;
+  border-radius: 0 4px 4px 0;
+}
+
+.error-hint p {
+  margin-top: 0;
+  font-weight: 600;
+  color: #bd34fe;
+}
+
+.error-hint ul {
+  margin-bottom: 0;
+  padding-left: 1.5rem;
+}
+
+.error-hint li {
+  margin: 0.5rem 0;
+  color: #e2e2e2;
 }
